@@ -861,122 +861,7 @@ html { scroll-behavior: smooth; }
 .final-cta p { font-size: 15px; color: var(--muted); max-width: 440px; margin: 0 auto 32px; line-height: 1.7; }
 .final-cta-actions { display: flex; gap: 14px; justify-content: center; }
 
-/* ══════════════════════════════════
-   COMMISSION CHART
-══════════════════════════════════ */
-.chart-wrap {
-  margin-top: 36px;
-  padding: 32px 28px 28px;
-}
-.chart-title {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-.chart-desc {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.65;
-  max-width: 620px;
-  margin-bottom: 32px;
-}
-.chart-body {
-  display: flex;
-  gap: 0;
-}
-.chart-y-label {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: .1em;
-  color: var(--muted2);
-  text-transform: uppercase;
-  margin-right: 16px;
-  white-space: nowrap;
-  align-self: center;
-}
-.chart-inner {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.chart-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 6px;
-}
-.chart-row-label {
-  font-size: 11px;
-  color: var(--muted);
-  text-align: right;
-  width: 130px;
-  flex-shrink: 0;
-  line-height: 1.4;
-}
-.chart-bar-track {
-  flex: 1;
-  position: relative;
-  height: 36px;
-  background: rgba(255,255,255,.04);
-  border: 1px solid var(--line);
-  border-radius: 3px;
-  overflow: hidden;
-}
-.chart-bar-track::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
-  background-size: calc(100% / 4) 9px;
-  pointer-events: none;
-  z-index: 2;
-}
-.chart-bar {
-  position: absolute;
-  top: 0; left: 0; bottom: 0;
-  background: var(--red);
-  transition: width .8s cubic-bezier(.25,.8,.25,1);
-  z-index: 1;
-}
-.chart-bar-pct {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 11px;
-  font-weight: 700;
-  color: rgba(255,255,255,.45);
-  z-index: 3;
-}
-.chart-x-axis {
-  display: flex;
-  margin-left: 144px;
-  margin-top: 10px;
-}
-.chart-x-ticks {
-  flex: 1;
-  display: flex;
-  justify-content: space-between;
-}
-.chart-x-ticks span {
-  font-size: 11px;
-  color: var(--muted2);
-}
-.chart-x-label {
-  text-align: center;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .08em;
-  color: var(--muted2);
-  text-transform: uppercase;
-  margin-top: 8px;
-  margin-left: 144px;
-}
+
 
 /* ══════════════════════════════════
    FOOTER
@@ -1007,6 +892,133 @@ footer {
 .footer-links a { color: inherit; text-decoration: none; transition: color .15s; }
 .footer-links a:hover { color: #fff; }
 .footer-copy { font-size: 11px; color: var(--muted2); text-align: right; }
+
+/* ══════════════════════════════════
+   MOBILE — ≤768px
+══════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* Global section padding */
+  .section { padding: 48px 20px; }
+  .section-alt { padding: 48px 20px; }
+
+  /* ── NAV ── */
+  nav {
+    padding: 0 20px;
+    height: 56px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-links { display: none; }
+  .nav-actions .btn-ghost { display: none; }
+  .nav-actions .btn-red { padding: 8px 14px; font-size: 12px; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 48px 20px 40px;
+    min-height: auto;
+  }
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .hero h1.nn { font-size: 52px; }
+  .hero-body { font-size: 14px; max-width: 100%; }
+  .hero-actions { flex-direction: column; gap: 10px; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .trust-strip {
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 10px;
+  }
+
+  /* Carousel */
+  .tier-carousel { width: 100%; height: 300px; }
+  .cc-slide { width: 230px; margin-left: -115px; padding: 22px; }
+  .cc-pct { font-size: 60px; }
+  .cc-slide[data-state="right"]    { transform: translateX(120px) scale(.82) rotate(4deg); }
+  .cc-slide[data-state="left"]     { transform: translateX(-120px) scale(.82) rotate(-4deg); }
+  .cc-slide[data-state="far-right"]{ transform: translateX(180px) scale(.68) rotate(8deg); }
+  .cc-slide[data-state="far-left"] { transform: translateX(-180px) scale(.68) rotate(-8deg); }
+
+  /* ── HOW IT WORKS ── */
+  .how-inner { padding: 0; }
+  .how-header {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .how-header h2 { font-size: 26px; }
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 2px;
+    border-radius: 10px;
+  }
+  .step-card:first-child { border-radius: 10px 10px 0 0; }
+  .step-card:last-child  { border-radius: 0 0 10px 10px; }
+
+  /* ── COMMISSIONS ── */
+  .tiers-inner { padding: 0; }
+  .tiers-header { grid-template-columns: 1fr; gap: 12px; }
+  .tiers-header h2 { font-size: 26px; }
+  .tiers-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .tier-pct { font-size: 40px; }
+  .deal-types { grid-template-columns: 1fr; gap: 10px; }
+
+  /* Negotiate row */
+  .section-alt > .tiers-inner > div[style*="justify-content:space-between"] {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  /* ── MARKETING TOOLS ── */
+  .tools-inner { padding: 0; }
+  .tools-grid { grid-template-columns: 1fr; gap: 10px; }
+
+  /* ── RESPONSIBILITIES ── */
+  .resp-inner { grid-template-columns: 1fr; gap: 32px; }
+  .resp-copy h2 { font-size: 26px; }
+
+  /* ── TESTIMONIALS ── */
+  .testi-inner { padding: 0; }
+  .testi-grid { grid-template-columns: 1fr; gap: 12px; }
+
+  /* ── FINAL CTA ── */
+  .final-cta { padding: 64px 20px; }
+  .final-cta h2.nn { font-size: 40px; }
+  .final-cta-actions { flex-direction: column; align-items: center; gap: 10px; }
+  .final-cta-actions .btn { width: 100%; max-width: 320px; justify-content: center; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 28px 20px;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    text-align: center;
+  }
+  .footer-logo { justify-content: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 14px; }
+  .footer-copy { text-align: center; }
+}
+
+/* ── Tablet — 769px–1024px ── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section, .section-alt { padding: 56px 32px; }
+  nav { padding: 0 32px; }
+  .hero { padding: 60px 32px; }
+  .hero h1.nn { font-size: 60px; }
+  .hero-inner { gap: 28px; }
+  .tiers-grid { grid-template-columns: repeat(2, 1fr); }
+  .testi-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: 1fr; gap: 2px; }
+  .resp-inner { gap: 40px; }
+  footer { padding: 28px 32px; }
+}
 
 </style>
 </head>
@@ -1212,9 +1224,9 @@ footer {
     <div class="tiers-header">
       <div>
         <div class="eyebrow">Comissões e Níveis</div>
-        <h2>Quanto mais você traz,<br>mais você ganha</h2>
+        <h2>Como ganhar a sua comissão?</h2>
+        <p style="font-size:14px; color:var(--muted); line-height:1.7; max-width:560px; margin-top:14px; text-align:left;">A comissão é a forma como pagamos pela sua afiliação. Esta taxa depende da receita líquida do tráfego que você pode gerar. Nossa taxa de comissão padrão é composta por 4 níveis. No primeiro nível, a taxa é de 25%, e pode chegar até 40% no nível 4.</p>
       </div>
-      <p>Revenue share escalonado por receita líquida mensal gerada pelos seus indicados.</p>
     </div>
 
     <div class="tiers-grid">
@@ -1289,66 +1301,14 @@ footer {
 
     </div><!-- /tiers-grid -->
 
-    <!-- Commission bar chart -->
-    <div class="card chart-wrap">
-      <div class="chart-title">Como ganhar a sua comissão?</div>
-      <div class="chart-desc">
-        A comissão é a forma como pagamos pela sua afiliação. Esta taxa depende da receita líquida do tráfego que você pode gerar. Nossa taxa de comissão padrão é composta por 4 níveis. No primeiro nível, a taxa é de 25%, e pode chegar até 40% no nível 4.<br><br>
-        Consulte a tabela abaixo para ver a taxa de comissão de cada nível.
-      </div>
+    <p style="font-size:11px; color:var(--muted2); line-height:1.6; margin-bottom:4px;">* Revenue share escalonado por receita líquida mensal gerada pelos seus indicados.</p>
 
-      <div class="chart-body">
-        <div class="chart-y-label">Níveis de comissão: Receita líquida de jogos</div>
-        <div class="chart-inner">
+    <div style="margin-top:20px; margin-bottom:16px;">
+      <h3 style="font-size:16px; font-weight:700; margin-bottom:6px;">Quer negociar uma taxa diferente?</h3>
+      <p style="font-size:13px; color:var(--muted); line-height:1.6;">Oferecemos <strong style="color:#fff; font-weight:600;">acordos personalizados</strong> para grandes parceiros com volume alto.</p>
+    </div>
 
-          <div class="chart-row">
-            <div class="chart-row-label">Nível 1 R$1<br>até R$15.000</div>
-            <div class="chart-bar-track">
-              <div class="chart-bar" style="width:62.5%"></div>
-              <span class="chart-bar-pct">25%</span>
-            </div>
-          </div>
-
-          <div class="chart-row">
-            <div class="chart-row-label">Nível 2 R$15.000<br>até R$20.000</div>
-            <div class="chart-bar-track">
-              <div class="chart-bar" style="width:75%"></div>
-              <span class="chart-bar-pct">30%</span>
-            </div>
-          </div>
-
-          <div class="chart-row">
-            <div class="chart-row-label">Nível 3 R$20.000<br>até R$30.000</div>
-            <div class="chart-bar-track">
-              <div class="chart-bar" style="width:87.5%"></div>
-              <span class="chart-bar-pct">35%</span>
-            </div>
-          </div>
-
-          <div class="chart-row elite">
-            <div class="chart-row-label">Nível 4 R$30.000<br>ou mais</div>
-            <div class="chart-bar-track">
-              <div class="chart-bar" style="width:100%"></div>
-              <span class="chart-bar-pct">40%</span>
-            </div>
-          </div>
-
-          <div class="chart-x-axis">
-            <div class="chart-x-ticks">
-              <span>0</span>
-              <span>10</span>
-              <span>20</span>
-              <span>30</span>
-              <span>40</span>
-            </div>
-          </div>
-          <div class="chart-x-label">Comissão (%)</div>
-
-        </div><!-- /chart-inner -->
-      </div><!-- /chart-body -->
-    </div><!-- /chart-wrap -->
-
-    <div class="deal-types" style="margin-top:28px;">
+    <div class="deal-types">
       <div class="card deal-type">
         <div class="deal-type-icon"><i class="ti ti-chart-pie"></i></div>
         <div>
@@ -1370,11 +1330,6 @@ footer {
           <p>CPA + Revenue Share combinados</p>
         </div>
       </div>
-    </div>
-
-    <div class="custom-bar">
-      <p>Tem um volume alto? Oferecemos <strong>acordos personalizados</strong> para grandes parceiros.</p>
-      <a class="btn btn-primary" href="#">Negociar um acordo</a>
     </div>
   </div>
 </section>
@@ -1413,7 +1368,7 @@ footer {
       <div class="eyebrow">Responsabilidades</div>
       <h2>Uma parceria construída sobre confiança</h2>
       <p>Promovemos de forma responsável e dentro das regras. Todos os afiliados concordam com os termos abaixo antes de entrar no ar — sem exceções.</p>
-      <a class="tcs-link" href="#">Ler Termos &amp; Condições completos <i class="ti ti-arrow-right"></i></a>
+      <a class="tcs-link" href="https://kto.kgp-cdn.com/kto/2025/11/11183947/TCs_Affiliates-2025.pdf" target="_blank" rel="noopener">Ler Termos &amp; Condições completos <i class="ti ti-arrow-right"></i></a>
     </div>
 
     <div class="resp-list">
@@ -1553,7 +1508,7 @@ footer {
     <a href="#">Ferramentas</a>
     <a href="#">Sobre a KTO</a>
     <a href="#">Contato</a>
-    <a href="#">Termos &amp; Condições</a>
+    <a href="https://kto.kgp-cdn.com/kto/2025/11/11183947/TCs_Affiliates-2025.pdf" target="_blank" rel="noopener">Termos &amp; Condições</a>
     <a href="#">kto.bet.br</a>
   </div>
 

@@ -1083,7 +1083,7 @@ footer {
       <span class="lang-sep">|</span>
       <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
     </div>
-    <a class="btn btn-ghost" href="https://login.ktoaffiliatesbr.com/signin.php" target="_blank" rel="noopener" style="padding:8px 18px; font-size:12px;" data-i18n="nav.entrar">Entrar</a>
+    <a class="btn btn-ghost" href="https://login.ktoaffiliatesbr.com/signin.php?lang=1" target="_blank" rel="noopener" style="padding:8px 18px; font-size:12px;" data-i18n="nav.entrar">Entrar</a>
     <a class="btn btn-red" href="https://login.ktoaffiliatesbr.com/signup.php?lang=1" target="_blank" rel="noopener" style="padding:8px 18px; font-size:12px;" data-i18n="nav.aplicar">Aplicar</a>
   </div>
 </nav>
@@ -1527,7 +1527,7 @@ footer {
     <p data-i18n="cta.body">Junte-se ao programa de afiliados e comece a ganhar até 40% de comissão a partir do próximo mês.</p>
     <div class="final-cta-actions">
       <a class="btn btn-primary" href="https://login.ktoaffiliatesbr.com/signup.php?lang=1" target="_blank" rel="noopener" style="padding:15px 32px; font-size:14px;" data-i18n="cta.btn1">Aplicar <i class="ti ti-arrow-right"></i></a>
-      <a class="btn btn-ghost" href="https://login.ktoaffiliatesbr.com/signin.php" target="_blank" rel="noopener" style="padding:15px 24px; font-size:14px;" data-i18n="cta.btn2">Entrar</a>
+      <a class="btn btn-ghost" href="https://login.ktoaffiliatesbr.com/signin.php?lang=1" target="_blank" rel="noopener" style="padding:15px 24px; font-size:14px;" data-i18n="cta.btn2">Entrar</a>
     </div>
   </div>
 </section>
@@ -1870,6 +1870,11 @@ const APPLY_LINKS = {
   en: 'https://login.ktoaffiliatesbr.com/signup.php?lang=0'
 };
 
+const SIGNIN_LINKS = {
+  pt: 'https://login.ktoaffiliatesbr.com/signin.php?lang=1',
+  en: 'https://login.ktoaffiliatesbr.com/signin.php?lang=0'
+};
+
 function setLang(lang) {
   const t = translations[lang];
 
@@ -1888,6 +1893,11 @@ function setLang(lang) {
   // Update Apply button hrefs
   document.querySelectorAll('a[data-i18n="nav.aplicar"], a[data-i18n="hero.cta1"], a[data-i18n="cta.btn1"]').forEach(el => {
     el.href = APPLY_LINKS[lang];
+  });
+
+  // Update Login button hrefs
+  document.querySelectorAll('a[data-i18n="nav.entrar"], a[data-i18n="cta.btn2"]').forEach(el => {
+    el.href = SIGNIN_LINKS[lang];
   });
 
   // Update <html> lang attribute

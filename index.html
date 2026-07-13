@@ -106,6 +106,30 @@ body {
 /* ══════════════════════════════════
    NAV
 ══════════════════════════════════ */
+
+/* ── Language toggle (in nav) ── */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.lang-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted2);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: color .15s;
+  font-family: 'Inter', sans-serif;
+}
+.lang-btn:hover { color: #fff; }
+.lang-btn.active { color: #fff; }
+.lang-sep { color: var(--line); font-size: 11px; user-select: none; }
+
 nav {
   display: flex;
   align-items: center;
@@ -906,6 +930,7 @@ footer {
   .nav-links { display: none; }
   .nav-actions .btn-ghost { font-size: 11px; padding: 7px 12px; }
   .nav-actions .btn-red { padding: 8px 14px; font-size: 12px; }
+  .lang-toggle { display: none; }
 
   /* ── HERO ── */
   .hero {
@@ -1018,6 +1043,7 @@ footer {
 <body>
 
 <!-- ══ NAV ══ -->
+
 <nav>
   <div class="nav-logo">
     <svg class="nav-svg-logo" width="100" viewBox="0 0 186 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1045,16 +1071,21 @@ footer {
   </div>
 
   <ul class="nav-links">
-    <li><a href="#sobre" class="active">Início</a></li>
-    <li><a href="#como-funciona">Como Funciona</a></li>
-    <li><a href="#comissoes">Comissões</a></li>
-    <li><a href="#depoimentos">Depoimentos</a></li>
-    <li><a href="#responsabilidades">Contato</a></li>
+    <li><a href="#sobre" class="active" data-i18n="nav.inicio">Início</a></li>
+    <li><a href="#como-funciona" data-i18n="nav.como-funciona">Como Funciona</a></li>
+    <li><a href="#comissoes" data-i18n="nav.comissoes">Comissões</a></li>
+    <li><a href="#depoimentos" data-i18n="nav.depoimentos">Depoimentos</a></li>
+    <li><a href="#responsabilidades" data-i18n="nav.contato">Contato</a></li>
   </ul>
 
   <div class="nav-actions">
-    <a class="btn btn-ghost" href="https://login.ktoaffiliatesbr.com/signin.php" target="_blank" rel="noopener" style="padding:8px 18px; font-size:12px;">Entrar</a>
-    <a class="btn btn-red" href="https://login.ktoaffiliatesbr.com/signup.php" target="_blank" rel="noopener" style="padding:8px 18px; font-size:12px;">Aplicar</a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-pt" onclick="setLang('pt')">PT</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <a class="btn btn-ghost" href="https://login.ktoaffiliatesbr.com/signin.php" target="_blank" rel="noopener" style="padding:8px 18px; font-size:12px;" data-i18n="nav.entrar">Entrar</a>
+    <a class="btn btn-red" href="https://login.ktoaffiliatesbr.com/signup.php?lang=1" target="_blank" rel="noopener" style="padding:8px 18px; font-size:12px;" data-i18n="nav.aplicar">Aplicar</a>
   </div>
 </nav>
 
@@ -1063,11 +1094,7 @@ footer {
   <div class="hero-inner">
     <div>
 
-      <h1 class="nn">
-        Programa de<br>
-        Afiliados<br>
-        da KTO.
-      </h1>
+      <h1 class="nn" data-i18n="hero.h1">Programa de<br>Afiliados<br>da KTO.</h1>
 
       <p class="hero-body">
         Faça parceria com a marca de iGaming mais confiável do Brasil.
@@ -1076,10 +1103,8 @@ footer {
       </p>
 
       <div class="hero-actions">
-        <a class="btn btn-primary" href="https://login.ktoaffiliatesbr.com/signup.php" target="_blank" rel="noopener" style="font-size:14px; padding:13px 26px;">
-          Aplicar <i class="ti ti-arrow-right"></i>
-        </a>
-        <a class="btn btn-ghost" href="#como-funciona" style="font-size:14px; padding:13px 22px;">Como funciona</a>
+        <a class="btn btn-primary" href="https://login.ktoaffiliatesbr.com/signup.php?lang=1" target="_blank" rel="noopener" style="font-size:14px; padding:13px 26px;" data-i18n="hero.cta1">Aplicar <i class="ti ti-arrow-right"></i></a>
+        <a class="btn btn-ghost" href="#como-funciona" style="font-size:14px; padding:13px 22px;" data-i18n="hero.cta2">Como funciona</a>
       </div>
 
       <div class="trust-strip">
@@ -1200,27 +1225,27 @@ footer {
   <div class="how-inner">
     <div class="how-header">
       <div>
-        <div class="eyebrow">Como funciona</div>
-        <h2>Três passos para começar a ganhar</h2>
+        <div class="eyebrow" data-i18n="how.eyebrow">Como funciona</div>
+        <h2 data-i18n="how.h2">Três passos para começar a ganhar</h2>
       </div>
-      <p>Nosso processo de aprovação é rápido. A maioria dos afiliados começa a promover em até 48 horas.</p>
+      <p data-i18n="how.sub">Nosso processo de aprovação é rápido. A maioria dos afiliados começa a promover em até 48 horas.</p>
     </div>
 
     <div class="steps-grid">
       <div class="step-card" data-n="01">
         <div class="step-icon"><i class="ti ti-user-plus"></i></div>
-        <h3>Cadastre-se</h3>
-        <p>Preencha nosso formulário de afiliado em poucos minutos. Precisamos de informações básicas sobre seus canais e audiência.</p>
+        <h3 data-i18n="how.step1.title">Cadastre-se</h3>
+        <p data-i18n="how.step1.body">Preencha nosso formulário de afiliado em poucos minutos. Precisamos de informações básicas sobre seus canais e audiência.</p>
       </div>
       <div class="step-card" data-n="02">
         <div class="step-icon"><i class="ti ti-rocket"></i></div>
-        <h3>Seja aprovado e promova</h3>
-        <p>Após aprovação, você recebe seus links de rastreamento e acesso à nossa biblioteca completa de criativos.</p>
+        <h3 data-i18n="how.step2.title">Seja aprovado e promova</h3>
+        <p data-i18n="how.step2.body">Após aprovação, você recebe seus links de rastreamento e acesso à nossa biblioteca completa de criativos.</p>
       </div>
       <div class="step-card" data-n="03">
         <div class="step-icon" style="background:rgba(250,215,73,.1); border-color:rgba(250,215,73,.2); color:var(--yellow);"><i class="ti ti-coins"></i></div>
-        <h3>Ganhe até 40%</h3>
-        <p>Receba comissões mensais baseadas na receita líquida dos jogadores que você indicou. Sem teto, sem surpresas.</p>
+        <h3 data-i18n="how.step3.title">Ganhe até 40%</h3>
+        <p data-i18n="how.step3.body">Receba comissões mensais baseadas na receita líquida dos jogadores que você indicou. Sem teto, sem surpresas.</p>
       </div>
     </div>
   </div>
@@ -1231,8 +1256,8 @@ footer {
   <div class="tiers-inner">
     <div class="tiers-header">
       <div>
-        <div class="eyebrow">Comissões e Níveis</div>
-        <h2>Como ganhar a sua comissão?</h2>
+        <div class="eyebrow" data-i18n="com.eyebrow">Comissões e Níveis</div>
+        <h2 data-i18n="com.h2">Como ganhar a sua comissão?</h2>
         <p style="font-size:14px; color:var(--muted); line-height:1.7; max-width:560px; margin-top:14px; text-align:left;">A comissão é a forma como pagamos pela sua afiliação. Esta taxa depende da receita líquida do tráfego que você pode gerar. Nossa taxa de comissão padrão é composta por 4 níveis. No primeiro nível, a taxa é de 25%, e pode chegar até 40% no nível 4.</p>
       </div>
     </div>
@@ -1345,20 +1370,20 @@ footer {
 <!-- ══ MARKETING TOOLS ══ -->
 <section id="ferramentas" class="section">
   <div class="tools-inner">
-    <div class="eyebrow">Ferramentas de Marketing</div>
-    <h2 style="font-size:34px; font-weight:800; margin-bottom:10px;">Tudo que você precisa para converter</h2>
+    <div class="eyebrow" data-i18n="tools.eyebrow">Ferramentas de Marketing</div>
+    <h2 style="font-size:34px; font-weight:800; margin-bottom:10px;" data-i18n="tools.h2">Tudo que você precisa para converter</h2>
     <p class="muted" style="font-size:14px; margin-bottom:36px; max-width:480px; line-height:1.7;">Nossa equipe de marketing cuida dos criativos. Você foca em distribuir.</p>
 
     <div class="tools-grid">
       <div class="card tool-card">
         <div class="tool-icon blue"><i class="ti ti-link"></i></div>
-        <h4>Links de rastreamento</h4>
-        <p>Links personalizados com rastreamento em tempo real por canal, campanha e sub-ID.</p>
+        <h4 data-i18n="tools.t1.title">Links de rastreamento</h4>
+        <p data-i18n="tools.t1.body">Links personalizados com rastreamento em tempo real por canal, campanha e sub-ID.</p>
       </div>
       <div class="card tool-card">
         <div class="tool-icon green"><i class="ti ti-photo"></i></div>
-        <h4>Biblioteca de criativos</h4>
-        <p>Banners, vídeos e assets otimizados para sports betting e casino. Atualizados semanalmente.</p>
+        <h4 data-i18n="tools.t2.title">Biblioteca de criativos</h4>
+        <p data-i18n="tools.t2.body">Banners, vídeos e assets otimizados para sports betting e casino. Atualizados semanalmente.</p>
       </div>
       <div class="card tool-card">
         <div class="tool-icon red"><i class="ti ti-chart-bar"></i></div>
@@ -1372,8 +1397,8 @@ footer {
 <!-- ══ TESTIMONIALS ══ -->
 <section id="depoimentos" class="section">
   <div class="testi-inner">
-    <div class="eyebrow">Depoimentos</div>
-    <h2 style="font-size:34px; font-weight:800; margin-bottom:36px;">Parceiros que confiam na KTO</h2>
+    <div class="eyebrow" data-i18n="testi.eyebrow">Depoimentos</div>
+    <h2 style="font-size:34px; font-weight:800; margin-bottom:36px;" data-i18n="testi.h2">Parceiros que confiam na KTO</h2>
 
     <div class="testi-grid">
 
@@ -1451,36 +1476,43 @@ footer {
 <section id="responsabilidades" class="section section-alt">
   <div class="resp-inner">
     <div class="resp-copy">
-      <div class="eyebrow">Responsabilidades</div>
-      <h2>Uma parceria construída sobre confiança</h2>
-      <p>Promovemos de forma responsável e dentro das regras. Todos os afiliados concordam com os termos abaixo antes de entrar no ar — sem exceções.</p>
-      <a class="tcs-link" href="https://kto.kgp-cdn.com/kto/2025/11/11183947/TCs_Affiliates-2025.pdf" target="_blank" rel="noopener">Ler Termos &amp; Condições completos <i class="ti ti-arrow-right"></i></a>
+      <div class="eyebrow" data-i18n="resp.eyebrow">Responsabilidades</div>
+      <h2 data-i18n="resp.h2">Uma parceria construída sobre confiança</h2>
+      <p data-i18n="resp.body">Promovemos de forma responsável e dentro das regras. Todos os afiliados concordam com os termos abaixo antes de entrar no ar — sem exceções.</p>
+      <a class="tcs-link" href="https://kto.kgp-cdn.com/kto/2025/11/11183947/TCs_Affiliates-2025.pdf" target="_blank" rel="noopener" data-i18n="resp.tcs">Ler Termos &amp; Condições completos <i class="ti ti-arrow-right"></i></a>
+      <div style="margin-top:20px;">
+        <p style="font-size:13px; color:var(--muted); margin-bottom:6px;" data-i18n="resp.contact.label">Tem dúvidas? Fale diretamente com nossa equipe:</p>
+        <a id="contact-email" href="#" style="display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:600; color:#fff; text-decoration:none; transition:color .15s;">
+          <i class="ti ti-mail" style="color:var(--red); font-size:16px;"></i>
+          <span id="contact-email-text"></span>
+        </a>
+      </div>
     </div>
 
     <div class="resp-list">
       <div class="resp-item">
         <i class="ti ti-shield-check"></i>
-        <span>Divulgar os riscos associados ao jogo em todos os materiais</span>
+        <span data-i18n="resp.r1">Divulgar os riscos associados ao jogo em todos os materiais</span>
       </div>
       <div class="resp-item">
         <i class="ti ti-shield-check"></i>
-        <span>Exibir sinalização +18 clara em todas as peças de comunicação</span>
+        <span data-i18n="resp.r2">Exibir sinalização +18 clara em todas as peças de comunicação</span>
       </div>
       <div class="resp-item">
         <i class="ti ti-shield-check"></i>
-        <span>Não utilizar promoção enganosa ou promessas falsas de ganho</span>
+        <span data-i18n="resp.r3">Não utilizar promoção enganosa ou promessas falsas de ganho</span>
       </div>
       <div class="resp-item">
         <i class="ti ti-shield-check"></i>
-        <span>Evitar canais e conteúdos proibidos pela regulamentação brasileira</span>
+        <span data-i18n="resp.r4">Evitar canais e conteúdos proibidos pela regulamentação brasileira</span>
       </div>
       <div class="resp-item">
         <i class="ti ti-shield-check"></i>
-        <span>Nunca direcionar comunicação a menores ou grupos vulneráveis</span>
+        <span data-i18n="resp.r5">Nunca direcionar comunicação a menores ou grupos vulneráveis</span>
       </div>
       <div class="resp-item">
         <i class="ti ti-shield-check"></i>
-        <span>Incluir mensagens de jogo responsável em todos os materiais</span>
+        <span data-i18n="resp.r6">Incluir mensagens de jogo responsável em todos os materiais</span>
       </div>
     </div>
   </div>
@@ -1493,12 +1525,10 @@ footer {
       <i class="ti ti-trophy"></i> Pronto para começar?
     </div>
     <h2 class="nn">Ganhe com<br><span style="color:var(--red)">a KTO.</span></h2>
-    <p>Junte-se ao programa de afiliados e comece a ganhar até 40% de comissão a partir do próximo mês.</p>
+    <p data-i18n="cta.body">Junte-se ao programa de afiliados e comece a ganhar até 40% de comissão a partir do próximo mês.</p>
     <div class="final-cta-actions">
-      <a class="btn btn-primary" href="https://login.ktoaffiliatesbr.com/signup.php" target="_blank" rel="noopener" style="padding:15px 32px; font-size:14px;">
-        Aplicar <i class="ti ti-arrow-right"></i>
-      </a>
-      <a class="btn btn-ghost" href="https://login.ktoaffiliatesbr.com/signin.php" target="_blank" rel="noopener" style="padding:15px 24px; font-size:14px;">Entrar</a>
+      <a class="btn btn-primary" href="https://login.ktoaffiliatesbr.com/signup.php?lang=1" target="_blank" rel="noopener" style="padding:15px 32px; font-size:14px;" data-i18n="cta.btn1">Aplicar <i class="ti ti-arrow-right"></i></a>
+      <a class="btn btn-ghost" href="https://login.ktoaffiliatesbr.com/signin.php" target="_blank" rel="noopener" style="padding:15px 24px; font-size:14px;" data-i18n="cta.btn2">Entrar</a>
     </div>
   </div>
 </section>
@@ -1541,7 +1571,7 @@ footer {
   </div>
 
   <div class="footer-copy">
-    © 2026 KTO Group &nbsp;·&nbsp; +18 &nbsp;·&nbsp; Jogue com responsabilidade
+    <span data-i18n="footer.copy">© 2026 KTO Group · +18 · Jogue com responsabilidade</span>
   </div>
 </footer>
 
@@ -1666,6 +1696,215 @@ footer {
 
     render();
   })();
+</script>
+
+<script>
+  // ── Email obfuscation ──
+  (function() {
+    const u = 'affiliates';
+    const d = 'kto.com';
+    const email = u + '@' + d;
+    const el = document.getElementById('contact-email');
+    const txt = document.getElementById('contact-email-text');
+    if (el && txt) {
+      el.href = 'mai' + 'lto:' + email;
+      txt.textContent = email;
+    }
+  })();
+</script>
+
+<script>
+// ── i18n Translation Engine ──
+const translations = {
+  pt: {
+    // Nav
+    'nav.inicio': 'Início',
+    'nav.como-funciona': 'Como Funciona',
+    'nav.comissoes': 'Comissões',
+    'nav.depoimentos': 'Depoimentos',
+    'nav.contato': 'Contato',
+    'nav.entrar': 'Entrar',
+    'nav.aplicar': 'Aplicar',
+    // Hero
+    'hero.h1': 'Programa de<br>Afiliados<br>da KTO.',
+    'hero.body': 'Faça parceria com a marca de iGaming mais confiável do Brasil. Receba comissões de até <strong>40%</strong> sobre a receita líquida dos jogadores que você indicar — todos os meses, sem teto.',
+    'hero.cta1': 'Aplicar',
+    'hero.cta2': 'Como funciona',
+    'hero.trust1': '+18 apenas',
+    'hero.trust2': 'Jogue com responsabilidade',
+    'hero.trust3': 'Portaria SPA/MF',
+    'hero.trust4': '100% Licenciado',
+    // How it works
+    'how.eyebrow': 'Como funciona',
+    'how.h2': 'Três passos para começar a ganhar',
+    'how.sub': 'Nosso processo de aprovação é rápido. A maioria dos afiliados começa a promover em até 48 horas.',
+    'how.step1.title': 'Cadastre-se',
+    'how.step1.body': 'Preencha nosso formulário de afiliado em poucos minutos. Precisamos de informações básicas sobre seus canais e audiência.',
+    'how.step2.title': 'Seja aprovado e promova',
+    'how.step2.body': 'Após aprovação, você recebe seus links de rastreamento e acesso à nossa biblioteca completa de criativos.',
+    'how.step3.title': 'Ganhe até 40%',
+    'how.step3.body': 'Receba comissões mensais baseadas na receita líquida dos jogadores que você indicou. Sem teto, sem surpresas.',
+    // Commissions
+    'com.eyebrow': 'Comissões e Níveis',
+    'com.h2': 'Como ganhar a sua comissão?',
+    'com.sub': 'A comissão é a forma como pagamos pela sua afiliação. Esta taxa depende da receita líquida do tráfego que você pode gerar. Nossa taxa de comissão padrão é composta por 4 níveis. No primeiro nível, a taxa é de 25%, e pode chegar até 40% no nível 4.',
+    'com.note': '* Revenue share escalonado por receita líquida mensal gerada pelos seus indicados.',
+    'com.negotiate.title': 'Quer negociar uma taxa diferente?',
+    'com.negotiate.body': 'Oferecemos <strong style="color:#fff;font-weight:600">acordos personalizados</strong> para grandes parceiros com volume alto.',
+    'com.rs.title': 'Revenue Share',
+    'com.rs.body': '% da receita líquida mensal',
+    'com.cpa.title': 'CPA',
+    'com.cpa.body': 'Valor fixo por jogador ativo',
+    'com.hybrid.title': 'Híbrido',
+    'com.hybrid.body': 'CPA + Revenue Share combinados',
+    // Tools
+    'tools.eyebrow': 'Ferramentas',
+    'tools.h2': 'Tudo que você precisa para converter',
+    'tools.t1.title': 'Links de rastreamento',
+    'tools.t1.body': 'Links personalizados com UTMs e rastreamento em tempo real. Saiba de onde vem cada conversão.',
+    'tools.t2.title': 'Biblioteca de criativos',
+    'tools.t2.body': 'Banners, vídeos e peças prontas para todos os formatos. Atualizadas com cada promoção da KTO.',
+    'tools.t3.title': 'Relatórios em tempo real',
+    'tools.t3.body': 'Dashboard com cliques, registros, depósitos e comissões. Dados atualizados diariamente.',
+    // Testimonials
+    'testi.eyebrow': 'Depoimentos',
+    'testi.h2': 'Parceiros que confiam na KTO',
+    // Responsibilities
+    'resp.eyebrow': 'Responsabilidades',
+    'resp.h2': 'Uma parceria construída sobre confiança',
+    'resp.body': 'Promovemos de forma responsável e dentro das regras. Todos os afiliados concordam com os termos abaixo antes de entrar no ar — sem exceções.',
+    'resp.tcs': 'Ler Termos & Condições completos',
+    'resp.contact.label': 'Tem dúvidas? Fale diretamente com nossa equipe:',
+    'resp.r1': 'Divulgar os riscos associados ao jogo em todos os materiais',
+    'resp.r2': 'Exibir sinalização +18 clara em todas as peças de comunicação',
+    'resp.r3': 'Não utilizar promoção enganosa ou promessas falsas de ganho',
+    'resp.r4': 'Evitar canais e conteúdos proibidos pela regulamentação brasileira',
+    'resp.r5': 'Nunca direcionar comunicação a menores ou grupos vulneráveis',
+    'resp.r6': 'Incluir mensagens de jogo responsável em todos os materiais',
+    // Final CTA
+    'cta.eyebrow': 'Pronto para começar?',
+    'cta.h2': 'Ganhe com<br><span style="color:var(--red)">a KTO.</span>',
+    'cta.body': 'Junte-se ao programa de afiliados e comece a ganhar até 40% de comissão a partir do próximo mês.',
+    'cta.btn1': 'Aplicar',
+    'cta.btn2': 'Entrar',
+    // Footer
+    'footer.copy': '© 2026 KTO Group · +18 · Jogue com responsabilidade',
+  },
+  en: {
+    // Nav
+    'nav.inicio': 'Home',
+    'nav.como-funciona': 'How It Works',
+    'nav.comissoes': 'Commissions',
+    'nav.depoimentos': 'Testimonials',
+    'nav.contato': 'Contact',
+    'nav.entrar': 'Log In',
+    'nav.aplicar': 'Apply',
+    // Hero
+    'hero.h1': 'KTO<br>Affiliate<br>Program.',
+    'hero.body': 'Partner with Brazil\'s most trusted iGaming brand. Earn commissions of up to <strong>40%</strong> on the net revenue of players you refer — every month, no cap.',
+    'hero.cta1': 'Apply',
+    'hero.cta2': 'How it works',
+    'hero.trust1': '+18 only',
+    'hero.trust2': 'Play responsibly',
+    'hero.trust3': 'Portaria SPA/MF',
+    'hero.trust4': '100% Licensed',
+    // How it works
+    'how.eyebrow': 'How It Works',
+    'how.h2': 'Three steps to start earning',
+    'how.sub': 'Our approval process is fast. Most affiliates start promoting within 48 hours.',
+    'how.step1.title': 'Sign up',
+    'how.step1.body': 'Fill in our affiliate form in just a few minutes. We need basic information about your channels and audience.',
+    'how.step2.title': 'Get approved & promote',
+    'how.step2.body': 'Once approved, you receive your tracking links and access to our full creative library.',
+    'how.step3.title': 'Earn up to 40%',
+    'how.step3.body': 'Receive monthly commissions based on the net revenue of the players you referred. No cap, no surprises.',
+    // Commissions
+    'com.eyebrow': 'Commissions & Tiers',
+    'com.h2': 'How do you earn your commission?',
+    'com.sub': 'Commission is how we pay for your referrals. The rate depends on the net revenue your traffic generates. Our standard commission structure has 4 tiers — starting at 25% and going up to 40% at tier 4.',
+    'com.note': '* Tiered revenue share based on monthly net gaming revenue generated by your referrals.',
+    'com.negotiate.title': 'Want to negotiate a different rate?',
+    'com.negotiate.body': 'We offer <strong style="color:#fff;font-weight:600">custom deals</strong> for high-volume partners.',
+    'com.rs.title': 'Revenue Share',
+    'com.rs.body': '% of monthly net revenue',
+    'com.cpa.title': 'CPA',
+    'com.cpa.body': 'Fixed value per active player',
+    'com.hybrid.title': 'Hybrid',
+    'com.hybrid.body': 'CPA + Revenue Share combined',
+    // Tools
+    'tools.eyebrow': 'Tools',
+    'tools.h2': 'Everything you need to convert',
+    'tools.t1.title': 'Tracking links',
+    'tools.t1.body': 'Custom tracking links with real-time data by channel, campaign, and sub-ID.',
+    'tools.t2.title': 'Creative library',
+    'tools.t2.body': 'Banners, videos and optimised assets for sports betting and casino. Updated weekly.',
+    'tools.t3.title': 'Real-time reports',
+    'tools.t3.body': 'Dashboard with clicks, registrations, deposits and commissions. Data updated daily.',
+    // Testimonials
+    'testi.eyebrow': 'Testimonials',
+    'testi.h2': 'Partners who trust KTO',
+    // Responsibilities
+    'resp.eyebrow': 'Responsibilities',
+    'resp.h2': 'A partnership built on trust',
+    'resp.body': 'We promote responsibly and within the rules. All affiliates agree to the terms below before going live — no exceptions.',
+    'resp.tcs': 'Read full Terms & Conditions',
+    'resp.contact.label': 'Have questions? Get in touch with our team directly:',
+    'resp.r1': 'Disclose gambling risks in all promotional materials',
+    'resp.r2': 'Display clear +18 signage in all communications',
+    'resp.r3': 'Do not use misleading promotions or false promises of winnings',
+    'resp.r4': 'Avoid channels and content prohibited by Brazilian regulations',
+    'resp.r5': 'Never target communications at minors or vulnerable groups',
+    'resp.r6': 'Include responsible gambling messages in all materials',
+    // Final CTA
+    'cta.eyebrow': 'Ready to start?',
+    'cta.h2': 'Earn with<br><span style="color:var(--red)">KTO.</span>',
+    'cta.body': 'Join the affiliate program and start earning up to 40% commission from next month.',
+    'cta.btn1': 'Apply',
+    'cta.btn2': 'Log In',
+    // Footer
+    'footer.copy': '© 2026 KTO Group · +18 · Play responsibly',
+  }
+};
+
+const APPLY_LINKS = {
+  pt: 'https://login.ktoaffiliatesbr.com/signup.php?lang=1',
+  en: 'https://login.ktoaffiliatesbr.com/signup.php?lang=0'
+};
+
+function setLang(lang) {
+  const t = translations[lang];
+
+  // Toggle button states
+  document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+  // Apply all translations via data-key
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) {
+      el.innerHTML = t[key];
+    }
+  });
+
+  // Update Apply button hrefs
+  document.querySelectorAll('a[data-i18n="nav.aplicar"], a[data-i18n="hero.cta1"], a[data-i18n="cta.btn1"]').forEach(el => {
+    el.href = APPLY_LINKS[lang];
+  });
+
+  // Update <html> lang attribute
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+
+  // Store preference
+  try { localStorage.setItem('kto-lang', lang); } catch(e) {}
+}
+
+// Auto-detect saved preference on load
+(function() {
+  try {
+    const saved = localStorage.getItem('kto-lang');
+    if (saved === 'en') setLang('en');
+  } catch(e) {}
+})();
 </script>
 
 </body>
